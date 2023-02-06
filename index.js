@@ -34,6 +34,9 @@ app.post('/register', (req, res) => {
    res.json({status:'ok'})
   });
 
+   app.get('/', (req, res) => {
+        res.send("Hello World");
+  });
 
   app.post('/create', (req, res) => {
     const name = req.body.name
