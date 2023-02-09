@@ -42,9 +42,14 @@ app.post('/register', (req, res) => {
     const name = req.body.name
     const contact = req.body.contact
     const address = req.body.address
+    const email = req.body.email
+    const age = req.body.age
+    const disability = req.body.disability
+    const gender = req.body.gender
 
-    con.query('INSERT INTO patients (name, contact, address) VALUES (?,?,?)', 
-    [name, contact, address], (err, result) => {
+
+    con.query('INSERT INTO patients (name, contact, address, email, age, disability, gender) VALUES (?,?,?,?,?,?,?)', 
+    [name, contact, address, email, age, disability, gender], (err, result) => {
         if (err) {
             console.log(err)
         } else {
@@ -64,20 +69,19 @@ app.post('/register', (req, res) => {
         }
   });
   });
-
+ 
   app.put('/update/:id', (req, res) => {
 
     const id = req.params.id;
     const name = req.body.name;
     const address = req.body.address;
     const contact = req.body.contact;
-    console.log(id);
-    console.log(name);
-    console.log(address);
-    console.log(contact);
+    const email = req.body.email
+    const age = req.body.age
+    const disability = req.body.disability
+    const gender = req.body.gender
 
-
-    con.query("UPDATE patients SET name = ?, address = ?, contact = ? WHERE id = ?", [ name,address, contact, id], (err, result) => {
+    con.query("UPDATE patients SET name = ?, address = ?, contact = ?, email = ?, age = ?, disability = ?, gender = ? WHERE id = ?", [ name,address, contact, email, age, disability, gender, id], (err, result) => {
         if(err) {
             console.log(err)
         } else {
